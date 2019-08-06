@@ -1,0 +1,63 @@
+<?php
+/**
+ * @var App\Entity\Station $station
+ * @var \Azura\Assets $assets
+ */
+
+$this->layout('main', [
+    'title' => __('Profile'),
+    'manual' => true,
+    'sidebar_tab' => 'profile',
+]);
+
+$assets
+    ->load('vue')
+    ->load('inline_player')
+    ->addInlineJs($this->fetch('partials/radio_controls.js'), 95)
+    ->load('clipboard')
+    ->load('fancybox')
+    ->addInlineJs($this->fetch('stations/profile/index.js', ['nowplaying' => $nowplaying]), 99);
+
+if ($customization->useWebSocketsForNowPlaying()) {
+    $assets->load('nchan');
+}
+?>
+
+<div class="row">
+    <div class="col-lg-7">
+        <?=$this->fetch('stations/profile/panel_header') ?>
+
+        <?=$this->fetch('stations/profile/panel_nowplaying') ?>
+
+    <?php if ($backend::supportsRequests() || $backend::supportsStreamers()): ?>
+        <div class="row">
+        <?php if ($backend::supportsRequests()): ?>
+            <div class="col">
+                <?=$this->fetch('stations/profile/panel_requests') ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($backend::supportsStreamers()): ?>
+            <div class="col">
+                <?=$this->fetch('stations/profile/panel_streamers') ?>
+            </div>
+        <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+        <?=$this->fetch('stations/profile/panel_publicpages') ?>
+    </div>
+
+    <div class="col-lg-5">
+        <?=$this->fetch('stations/profile/panel_streams') ?>
+
+    <?php if (\App\Radio\Adapters::FRONTEND_REMOTE !== $frontend_type): ?>
+        <?=$this->fetch('stations/profile/panel_frontend') ?>
+    <?php endif; ?>
+
+    <?php if (\App\Radio\Adapters::BACKEND_NONE === $backend_type): ?>
+        <?=$this->fetch('stations/profile/panel_backend_none') ?>
+    <?php else: ?>
+        <?=$this->fetch('stations/profile/panel_backend') ?>
+    <?php endif; ?>
+    </div>
+</div>

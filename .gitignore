@@ -1,0 +1,47 @@
+# Node Modules
+node_modules
+
+# Junk/cache files.
+*Thumbs.db
+tmp/cache/*---*
+*.DS_Store
+*.apdisk
+.vagrant
+.idea
+/ubuntu-*-console.log
+.phplint-cache
+
+# Local development files.
+/config/routes.dev.php
+/env.ini
+/app/env.ini
+/app/.env
+/env.ini
+/azuracast.env
+/util/fixtures/*
+/util/fixtures/**/*
+!/util/fixtures/.gitkeep
+/web/static/yarn-error.log
+/util/package_usage_report*
+
+# Composer-generated content
+/vendor/
+
+# Ansible deployment files
+/ansible/
+/util/ansible/deploy.retry
+/util/ansible/update.retry
+/tests/_output/*
+
+# Docker files
+/docker-compose.yml
+/docker-compose.override.yml
+
+# Backups
+/*.tar.gz
+/*.zip
+
+# Plugins
+/plugins/*
+/plugins/**/*
+!/plugins/.gitkeep

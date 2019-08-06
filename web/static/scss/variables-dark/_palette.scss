@@ -1,0 +1,21 @@
+// "-bg" is light for light themes, dark for dark themes.
+$bg: (
+  color: $material-color-grey-800,
+  dark:  $material-color-grey-900,
+  light: $material-color-grey-600
+);
+
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    primary:   $primary,
+    secondary: $secondary,
+    danger:    $danger,
+    info:      $info,
+    success:   $success,
+    warning:   $warning,
+    dark:      $dark,
+    light:     $light,
+    bg:        $bg
+  )
+);

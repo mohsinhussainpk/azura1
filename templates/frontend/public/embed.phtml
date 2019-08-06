@@ -1,0 +1,16 @@
+<?php
+/** @var App\Entity\Station $station */
+
+$this->layout('minimal', [
+    'page_class' => 'embed station-'.$station->getShortName(),
+    'title' => $this->e($station->getName()),
+    'hide_footer' => true
+]);
+
+/** @var \Azura\Assets $assets */
+$assets->load('vue');
+?>
+
+<div class="stations nowplaying">
+    <?=$this->fetch('frontend/public/player_component', ['station' => $station, 'nowplaying' => $nowplaying]) ?>
+</div>

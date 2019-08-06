@@ -1,0 +1,11 @@
+<?php
+/**
+ * @var string|null $title
+ * @var string|null $header
+ * @var \Azura\Assets $assets
+ * @var \App\Form\StationForm $form
+ */
+
+$assets->addInlineJs($this->fetch('partials/station_form.js'), 99);
+
+echo $this->fetch('system/form_page', ['title' => $title, 'header' => $header, 'form' => $form]);
